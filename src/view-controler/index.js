@@ -7,7 +7,7 @@ const changeView = (route) => {
     case '#/':
     { return container.appendChild(components.home()); }
     case '#/Login':
-    { return container.appendChild(components.profile()); }
+    { return container.appendChild(components.login()); }
     case '#/Profile':
     { return container.appendChild(components.profile()); }
     default:
