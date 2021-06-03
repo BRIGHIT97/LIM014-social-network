@@ -1,5 +1,5 @@
 export default () => {
-  const viewLogin = `<section>
+  const viewSignin = `<section>
       <div class="registration">
       <label for="inputNames" class="NameLabels">User Name</label>
       <div class="inputRegistration">
@@ -28,7 +28,7 @@ export default () => {
     </section>`;
 
   const divElem = document.createElement('div');
-  divElem.innerHTML = viewLogin;
+  divElem.innerHTML = viewSignin;
 
   const button = divElem.querySelector('#submitRegis');
   button.addEventListener('click', () => {
@@ -49,6 +49,17 @@ export default () => {
         console.log(errorCode);
         console.log(errorMessage);
       });
+
+    const user = firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(() => {
+      // Email sent.
+      window.location.hash = '#/';
+      console.log('Sending Email Verification...');
+    }).catch((error) => {
+      // An error happened.
+      console.log(error);
+    });
   });
 
   return divElem;
