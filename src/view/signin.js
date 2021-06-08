@@ -1,5 +1,8 @@
 export default () => {
   const viewSignin = `<section>
+      <div class="logo">
+      <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
+      </div>
       <div class="registration">
       <label for="inputNames" class="NameLabels">User Name</label>
       <div class="inputRegistration">
@@ -24,6 +27,13 @@ export default () => {
     </div>
     <div class="buttonRegistration">
       <button  type="submit" class="buttonSubmit" id='submitRegis'>Confirm identity</button>
+    </div>
+    <div class='google'>
+     <img src="img/logoGoogle.png" id='logo' alt="" height="20px" width="20px">
+     <button  class="googleRegistration" id='googleRegis'>Login with Google</button>
+    </div>
+    <div>
+    <a href= "#/Login" >You have an account? Log in!</a>
     </div>
     </section>`;
 
@@ -62,5 +72,32 @@ export default () => {
     });
   });
 
+  const googleReg = divElem.querySelector('#googleRegis');
+  googleReg.addEventListener('click', () => {
+    // console.log('registrando con google...');
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        const credential = result.credential;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        window.location.hash = '#/';
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        const credential = error.credential;
+        // ...
+      });
+  });
   return divElem;
 };

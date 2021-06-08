@@ -1,5 +1,9 @@
 export default () => {
   const viewLogin = `<section>
+    <div class="logo">
+    <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
+    </div>
+    <div id='fotmLogin'
     <div class="Login">
     <label for="staticEmail" class="loginLabel">Email</label>
     <div class="inputLogin">
@@ -15,7 +19,10 @@ export default () => {
   <div class="buttonLogin">
     <button type="submit" id="submitLogin" class="btn">Enter</button>
   </div>
- 
+  <div>
+  <a href= "#/SignIn" >You do not have an account? Sign up!</a>
+  </div>
+ </div>
   </section>`;
 
   const divElem = document.createElement('div');
@@ -42,36 +49,22 @@ export default () => {
         console.log(errorCode);
         console.log(errorMessage);
       });
+
+    // FUNCIÓN OBSERVADOR
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log(`${uid}el usuario esta activo`);
+        // ...
+      } else {
+        console.log('el usuario no esta activo');
+        // User is signed out
+        // ...
+      }
+    });
   });
 
   return divElem;
 };
-
-// function observador() {
-//   firebase.auth().onAuthStateChanged((user) => {
-//     if (user) {
-//       console.log('bienvenido');
-
-//       // User is signed in, see docs for a list of available properties
-//       // https://firebase.google.com/docs/reference/js/firebase.User
-//       const uid = user.uid;
-//       // ...
-//     } else {
-//       console.log('no existe usuario');
-//       // User is signed out
-//       // ...
-//     }
-//   });
-// }
-
-// CERRAR SESIÓN
-
-// function cerrarSesion() {
-//   firebase.auth().signOut()
-//     .then(() => {
-//       console.log('saliendo...');
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// }

@@ -1,0 +1,36 @@
+/*GENERAL FONT*/
+*{
+  margin: 1px;
+  padding: 0px;
+  box-sizing: border-box; /*establece una caja para tu ancho*/
+  text-decoration: none;
+  font-family:'Franklin Gothic', 'Arial Narrow', sans-serif;
+  background-color:rgba(225, 240, 255, 0.699);
+}
+
+div.logo{
+   background-position: center; 
+   padding-right: 38%;
+   padding-left: 38%;
+}
+
+.google{
+    width: 70%;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 18px;
+    background-color: transparent;
+    /* font-size: 13px;
+    font-weight: 600;
+    line-height: 34px; */
+    text-align: center;
+    position: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(102, 102, 102);
+}
+
+.registration{
+    /* margin-right: 20%;
+    margin-left: 20%; */
+}
