@@ -1,13 +1,15 @@
-import Home from './home.js';
-import Profile from './profile.js';
-import Login from './login.js';
-import SignIn from './signin.js';
+import { viewHome } from './home.js';
+import { viewLogIn } from './login.js';
+import { viewRegister } from './register.js';
+import { viewgeneral } from './general.js';
+import { viewProfile } from './profile.js';
+import { view404 } from './error.js';
 
-const components = {
-  home: Home,
-  login: Login,
-  signin: SignIn,
-  profile: Profile,
+export default {
+  home: viewHome,
+  login: viewLogIn,
+  register: viewRegister,
+  general: viewgeneral,
+  profile: viewProfile,
+  page404: view404,
 };
-
-export { components };
