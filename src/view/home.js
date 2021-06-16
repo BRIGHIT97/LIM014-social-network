@@ -1,23 +1,34 @@
-export default () => {
-  const viewHome = `<section>
-  <h2 class ="text-center">¡BIENVENIDO A DO-RE-MI"></h2>
-  <div>
-    <button onclick="cerrar()" id='bclose'>Cerrar Sesión</button>
-  </div>
-   </section>`;
+const homeView = (elem) => {
+  const goLogin = elem.querySelector('#logIn');
+  goLogin.addEventListener('click', () => window.location.hash = '#/login');
+
+  const goSign = elem.querySelector('#signUp');
+  goSign.addEventListener('click', () => window.location.hash = '#/register');
+
+  // eslint-disable-next-line no-unused-vars
+  const containerVerify = elem.querySelector('.containerVerify');
+};
+
+const viewHome = () => {
+  const view = `
+    <section class="container container-home">
+      <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
+      <h1 class="container-home__h1">Do-Re-Mi</h1>
+      <div>
+        <h3 class="container-home__h3 align-start">Enjoy the music!</h3>
+        <p class="containerVerify"></p>
+      </div>
+      <button id="logIn" class="button">Log In</button>
+      <p class="container-home__p">*** or ***</p>
+      <button id="signUp" class="button button--white">Sign Up</button>
+    </section>`;
 
   const divElem = document.createElement('div');
-  divElem.innerHTML = viewHome;
+  divElem.classList.add('divElement');
+  divElem.innerHTML = view;
 
-  const bclose = divElem.querySelector('#bclose');
-  bclose.addEventListener('click', () => {
-    // console.log('cerrando sesión...');
-    firebase.auth().signOut().then(() => {
-      window.location.hash = '#/Login';
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
-  });
+  homeView(divElem);
   return divElem;
 };
+
+export { viewHome };
