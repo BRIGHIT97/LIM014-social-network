@@ -83,8 +83,8 @@ const postFunctions = (divElem, elem) => {
   menuPost.addEventListener('click', (e) => {
     e.preventDefault();
     const modal = `<ul class="modal-menu">
-          <li idpost="${elem.idPost}" class="editPost">Edit</li>
-          <li class="deletePost" >Delete</li>
+          <li idpost="${elem.idPost}" class="edit-post">Edit</li>
+          <li class="delete-post" >Delete</li>
           </ul>`;
     container2.innerHTML = modal;
     containerList.appendChild(container2);
@@ -99,7 +99,6 @@ const postFunctions = (divElem, elem) => {
             <p>Do you want to delete this post?</p>
             <div>
               <li id="yes">Yes</li>
-              
               <li id="no">No</li>
             </div>`;
       container2.innerHTML = '';
@@ -112,7 +111,7 @@ const postFunctions = (divElem, elem) => {
       noBtn.addEventListener('click', () => container2.classList.add('hide'));
     });
 
-    const editPostButton = divElem.querySelector('.editPost');
+    const editPostButton = divElem.querySelector('.edit-post');
     const saveEditPostIcon = divElem.querySelector('.saveIcon');
     editPostButton.addEventListener('click', () => {
       const publishedText = divElem.querySelector('.publishedText');
@@ -135,15 +134,15 @@ const postFunctions = (divElem, elem) => {
 };
 // user = current user; elem = info del post
 const postLikes = (divElem, elem, user) => {
-  const handLike = divElem.querySelector('.fa-thumbs-up');
-  handLike.addEventListener('click', () => {
+  const startLike = divElem.querySelector('.fa-thumbs-up');
+  startLike.addEventListener('click', () => {
     let counter = elem.counterLikes;
     if (!counter.includes(user.id)) {
-      handLike.classList.replace('far', 'fas');
+      startLike.classList.replace('far', 'fas');
       counter.push(user.id);
       updatLike(elem.idPost, counter);
     } else if (counter.includes(user.id)) {
-      handLike.classList.replace('fas', 'far');
+      startLike.classList.replace('fas', 'far');
       counter = counter.filter((i) => i !== user.id);
       updatLike(elem.idPost, counter);
     }
@@ -171,7 +170,7 @@ const createPostComments = (divElem) => {
     e.preventDefault();
     const descriptionComment = divElem.querySelector('#descriptionComment').value;
     if (descriptionComment.charAt(0) === ' ' || descriptionComment === '') {
-      errorComment.textContent = '❓ Write the comment.';
+      errorComment.textContent = '❓ Write the comment';
     } else {
       createComments(idCommentPost, photoCommentUser, userNameFB, userIdFB, descriptionComment);
       createComment.reset();
@@ -248,17 +247,17 @@ const postTemplate = (elem, user) => {
     </div>
     <div class="container-submit">
       <section>
-      <i class="${elem.counterLikes.includes(user.id) ? 'fas' : 'far'} fa-thumbs-up"></i>
+        <i class="${elem.counterLikes.includes(user.id) ? 'fas' : 'far'} fa-thumbs-up"></i>
         <p>${elem.counterLikes.length ? elem.counterLikes.length : ''} </p>
       </section>
       <section>
         <i class="commentIcon far fa-comments"></i>
         <p></p>
-      </section>    
+      </section>
     </div>
     <form class="create-comment hide" id="form-createComment" idCommentPost1="${elem.idPost}" userId="${user.id}" userName="${user.name}" >
       <img class="image-circle image-circleComment" alt="userimage1" src="${user.photo}">
-      <textarea id="descriptionComment" class="input-comment" placeholder="Write a public comment..."></textarea>
+      <textarea id="descriptionComment" class="input-comment" placeholder="Leave a comment..."></textarea>
       <i idCommentPost="${elem.idPost}" class="sendCommentForm far fa-paper-plane"></i>
     </form>
     <div class="errorComment error"></div>
@@ -268,7 +267,7 @@ const postTemplate = (elem, user) => {
   return view;
 };
 
-const viewgeneral = (user) => {
+const viewGeneral = (user) => {
   const view = `
   <div class="container-header">
     <h1 class="h1">Do-Re-Mi</h1>
@@ -293,40 +292,40 @@ const viewgeneral = (user) => {
         <div class="error"></div>
         <div class="container-submit">
             <input type="file" id="uploadInput" accept="image/png, image/jpeg, image/jpg">
-            <button id="btn-post" class="postBtn">Post</button>
+            <button id="btn-post" class="button-small">Post</button>
         </div>
       </form>
       <div class="general-posts"></div>
     </div>
   </section>
   `;
-  const divElementm = document.createElement('div');
-  divElementm.innerHTML = '';
-  divElementm.innerHTML = view;
-  navSlide(divElementm);
-  createPost(divElementm);
+  const divElem = document.createElement('div');
+  divElem.innerHTML = '';
+  divElem.innerHTML = view;
+  navSlide(divElem);
+  createPost(divElem);
 
-  logOut(divElementm);
+  logOut(divElem);
 
   readAllPosts((post) => {
-    const container = divElementm.querySelector('.general-posts');
+    const container = divElem.querySelector('.general-posts');
     container.innerHTML = '';
     post.forEach((elem) => {
-      const divElem = document.createElement('div');
-      divElem.classList.add('individual-post');
-      divElem.innerHTML = postTemplate(elem, user);
+      const divElemt = document.createElement('div');
+      divElemt.classList.add('individual-post');
+      divElemt.innerHTML = postTemplate(elem, user);
 
       if (elem.id === user.id) {
-        postFunctions(divElem, elem);
+        postFunctions(divElemt, elem);
       }
-      postLikes(divElem, elem, user);
-      createPostComments(divElem);
-      readComments(divElem, user);
-      container.appendChild(divElem);
+      postLikes(divElemt, elem, user);
+      createPostComments(divElemt);
+      readComments(divElemt, user);
+      container.appendChild(divElemt);
     });
   });
 
-  return divElementm;
+  return divElem;
 };
 
 export {
@@ -336,7 +335,7 @@ export {
   postTemplate,
   postFunctions,
   postLikes,
-  viewgeneral,
+  viewGeneral,
   createPostComments,
   readComments,
 };

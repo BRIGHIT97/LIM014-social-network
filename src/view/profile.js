@@ -4,7 +4,7 @@ import {
   logOut,
   postTemplate,
   postFunctions,
-  // postLikes,
+  postLikes,
   createPostComments,
   readComments,
 } from './general.js';

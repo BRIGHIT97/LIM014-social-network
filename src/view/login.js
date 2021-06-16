@@ -59,9 +59,9 @@ const viewLogIn = () => {
       <div class="error"></div>
       <button class="button align-end" id="buttonSingin">Sign in</button>
     </form>
-    <article class="align-start">
+    <div class="align-start">
       <h4 class="container-home__h4 ahref"> Don't have an account?<a class="ahref" href="#/register"> Sign Up </a></h4>
-          </article>
+          </div>
   </section>
   `;
 
