@@ -315,7 +315,7 @@ Outras:
   First](https://tableless.com.br/mobile-first-a-arte-de-pensar-com-foco/)
 * [Mobile First - ZURB](https://zurb.com/word/mobile-first)
 * [Mobile First Is NOT Mobile Only - Nielsen Norman
-  Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
+  Group](https://www.nngroup.com/divs/mobile-first-not-mobile-only/)
 * [Flexbox - CSS
   Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 * [Módulos:

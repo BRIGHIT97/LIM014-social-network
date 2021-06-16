@@ -30,7 +30,38 @@ div.logo{
     color: rgb(102, 102, 102);
 }
 
-.registration{
+.container-home{
+  background-color: rgba(8, 6, 3, 0.274);
+  grid-template-rows: 20% 40% 10% 2% 10%;
+  margin: 0 auto;
+}
+
+.container-home__h3{
+  color:rgba(255, 255, 255, 0.884);
+  font-size: 1.5rem;
+  padding: 0.8rem;
+}
+
+.container-home__p{
+  color:rgba(255, 255, 255, 0.884);
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.8rem;
+}
+.button {
+  background-color: #fcd602;
+  border-radius: 1rem;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+  outline-style: none;
+  padding: .3rem;
+  width: 80%;
+  height: 3rem;
+}
+/* .registration{ */
     /* margin-right: 20%;
     margin-left: 20%; */
 }
