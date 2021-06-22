@@ -1,54 +1,84 @@
 /*GENERAL FONT*/
 *{
-  margin: 1px;
+  margin: 2px;
   padding: 0px;
   box-sizing: border-box; /*establece una caja para tu ancho*/
   text-decoration: none;
-  font-family:'Franklin Gothic', 'Arial Narrow', sans-serif;
+  /* font-family:'Raleway', sans-serif; */
+  background-size: 100%;
   background-color:rgba(225, 240, 255, 0.699);
+ }
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+html{
+  font-family: 'Raleway', sans-serif;
+}
+.postImg{
+  margin: 1rem 5% 0.4rem 5%;
+  width: 90%;
 }
 
-div.logo{
-   background-position: center; 
-   padding-right: 38%;
-   padding-left: 38%;
+/*home*/
+.container-home__h1{
+  margin-top: 3rem;
+  padding-top: 3rem;
+  text-align: center;
 }
 
+#logo{
+  margin-top: 1rem;
+  margin-left: 38%;
+  
+}
 .google{
-    width: 70%;
+    width: 7%;
     display: inline-block;
     border: 1px solid rgba(0, 0, 0, 0.16);
-    border-radius: 18px;
-    background-color: transparent;
-    /* font-size: 13px;
-    font-weight: 600;
-    line-height: 34px; */
-    text-align: center;
-    position: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: rgb(102, 102, 102);
+    border-radius: 100%;
+    border-color: #fcd602;
+    margin-top: .4rem ;
 }
 
 .container-home{
-  background-color: rgba(8, 6, 3, 0.274);
   grid-template-rows: 20% 40% 10% 2% 10%;
+  color:rgba(28, 42, 105, 0.884);
+  font-family: 'Courier New', Courier, monospace;
   margin: 0 auto;
+  /* font-style: italic; */
+  font-style: oblique;
 }
 
 .container-home__h3{
-  color:rgba(255, 255, 255, 0.884);
+  color:rgba(28, 42, 105, 0.884);
   font-size: 1.5rem;
   padding: 0.8rem;
+  text-align:center;
 }
 
 .container-home__p{
-  color:rgba(255, 255, 255, 0.884);
+  color:rgba(28, 42, 105, 0.884);
   font-size: 1.1rem;
   font-weight: bold;
   padding: 0.8rem;
+  text-align: center;
 }
-.button {
+.btnReg{
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+.btnRegs{
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: .3rem; */
+  
+}
+  .button {
   background-color: #fcd602;
   border-radius: 1rem;
   border-style: none;
@@ -57,11 +87,133 @@ div.logo{
   font-size: 1.25rem;
   font-weight: bold;
   outline-style: none;
-  padding: .3rem;
-  width: 80%;
+  padding: .1rem;
+  width: 70%;
   height: 3rem;
+  margin-top: .5rem;
 }
-/* .registration{ */
-    /* margin-right: 20%;
-    margin-left: 20%; */
+.regform{
+  margin: 1rem;
+  text-align: center;
+  
 }
+
+.container-home__h4 {
+  text-align: center;
+}
+
+.viewNav{
+  background-color: ;
+}
+nav ul{
+  list-style:none;/*quitarle los estilos de lista*/
+  display:flex;
+}
+
+nav li{
+  border-right:1px solid #fff;
+  text-align:center;
+  flex-grow:1
+}
+
+.image-circle{
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: .5rem;
+  border-radius: 50%;
+}
+
+.user-infoProfile{
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.user-infoProfile img{
+  width: 5rem;
+  height: 5rem;
+  margin-right: .5rem;
+  border-radius: 50%;
+}
+
+      .create-comment {
+        border-top: 1px dashed rgba(89, 86, 86, 0.842);
+        margin: 0 0 0.1rem 0.3rem;
+        min-width: 90%;
+        padding: 1rem .3rem .1rem .2rem;
+      }
+      .comments-container{
+        border-top: none;
+        margin: 0 0 0.1rem 0.3rem;
+        min-width: 90%;
+        padding: 0.7rem 1.4rem .1rem .2rem;
+      }
+      .input-comment{
+        width: 72%;
+        border-radius: 8px;
+        margin-left: 0.1rem;
+        padding: 0.3rem;  
+      }
+     .create-comment>i{
+        width:2%;
+        margin-left: 0.1rem;
+        cursor: pointer;
+      }
+      .read-comment{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      .read-comment>section{
+        margin-left: .6rem;
+      }
+      .read-comment>section>h2{
+        font-size: 1rem;
+        margin-bottom: 0;
+      }
+      .read-comment>section>span{
+        font-size: 0.8rem;
+      }
+      .read-commentp{
+        font-size: 1rem;
+      }
+      .userSelectComment{
+        text-align: end;
+      }
+      #buttonMenuComment>i{
+        font-size: 1.1rem;
+      }
+      .deleteComment{
+        cursor: pointer;
+      }
+      .deleteComment:hover{
+        transform: scale(1.2  );
+        transition: all .2s ease-in-out;
+      }
+      .errorComment{
+        margin-left: 4rem;
+        margin-bottom: 1rem;
+      }
+      .timeline-posts {
+        margin: 0.8rem 0 0.8rem 0;
+      }
+      .individual-post {
+        margin: 1rem 0 1rem 0;
+      }
+      
+      .container-submit > .fa-image{
+        font-size: 2rem;
+      }
+      .image-post{
+        width: 94%;
+        height: fit-content;
+        margin: 0.5rem;
+        object-fit: cover;
+      }
+      .ahref{
+        font-size: 0.9rem;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        padding-bottom: 2rem;
+      }
+  

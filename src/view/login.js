@@ -19,11 +19,11 @@ const logIn = (elem) => {
       })
       .catch((error) => {
         if (error.code === 'auth/wrong-password') {
-          elemDiv.textContent = '⚠️ Your password is wrong. Try again.';
+          elemDiv.textContent = '⚠️❗ Your password is wrong. Try again.';
         } else if (error.code === 'auth/user-not-found') {
-          elemDiv.textContent = '⚠️ The email you entered does not match to any account. Try again.';
+          elemDiv.textContent = '⚠️❗ The email you entered does not match to any account. Try again.';
         } else {
-          elemDiv.textContent = '⚠️ An error occurred. Please try again.';
+          elemDiv.textContent = '⚠️❗ Somthing is wrong. Please try again.';
         }
       });
   });
@@ -34,7 +34,12 @@ const signInWithGoogle = (elem) => {
   signInButton.addEventListener('click', () => {
     const elemDiv = elem.querySelector('.error');
     // eslint-disable-next-line no-return-assign
-    signInGoogle().then(() => window.location.hash = '#/general')
+    signInGoogle()
+      // eslint-disable-next-line no-unused-vars
+      .then((google) => {
+        // console.log(google);
+        window.location.hash = '#/general';
+      })
     // eslint-disable-next-line no-return-assign
       .catch(() => elemDiv.textContent = '⚠️ An error occurred. Please try again.');
   });
@@ -42,11 +47,14 @@ const signInWithGoogle = (elem) => {
 
 const viewLogIn = () => {
   const view = `
-  <section class="container container-form">
-    <h1 class="container-home__h1">DO-RE-MI</h1>
-    <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
-    <h3 class="container-home__h3">Welcome back!</h3>
-    <button id="logIn-google" class="button button--white">Sign In with <i class="fab fa-google"></i></button>
+  <section class="container container-form ">
+      <h1 class="container-home__h1">DO-RE-MI</h1>
+      <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
+      <h3 class="container-home__h3">Welcome back!</h3>
+    <div class="btnReg">
+    <button id="logIn-google" class="button button--white">Sign In with   <img src="img/logoGoogle.png" alt=""  class='google'></button>
+    </div>
+    <div class="regform">
     <form id="logIn-form">
       <div class="margin--button align-end">
         <i class="far fa-envelope "></i>
@@ -57,8 +65,11 @@ const viewLogIn = () => {
         <input type="password"  id="logIn-password" class="input" placeholder="Password" minlength=6 required>
       </div>
       <div class="error"></div>
+   <div class="btnReg">
       <button class="button align-end" id="buttonSingin">Sign in</button>
-    </form>
+    </div>
+      </form>
+      </div>
     <div class="align-start">
       <h4 class="container-home__h4 ahref"> Don't have an account?<a class="ahref" href="#/register"> Sign Up </a></h4>
           </div>

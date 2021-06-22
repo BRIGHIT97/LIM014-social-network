@@ -23,8 +23,9 @@ const signUp = (elem) => {
             // eslint-disable-next-line no-alert
             alert('We have sent an you an e-mail. Please verify it and confirm that it is you.');
           })
+          // eslint-disable-next-line no-unused-vars
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
         signOutAuth();
         window.location.hash = '#/';
@@ -61,9 +62,13 @@ const viewRegister = () => {
   const view = `
     <section class="container container-form ">
       <h1 class="container-home__h1">DO-RE-MI</h1>
+      <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
       <h3 class="container-home__h3">Let´s create your account!</h3>
-      <button id ="signUp-google" class="button button--white">Sign Up with <i class="fab fa-google"></i></button>
-      <form id='signUp-form'>
+      <div class="btnReg">
+      <button id ="signUp-google" class="button button--white">Sign Up with    <img src="img/logoGoogle.png" alt=""  class='google'></i></button>
+      </div>
+      <div class="regform">
+       <form id='signUp-form'>
         <div class="margin--button">
           <i class="fas fa-user"></i>
           <input type="text" class="input" placeholder="Name" id="signUpName" required>
@@ -77,11 +82,13 @@ const viewRegister = () => {
           <input type="password" id="signUp-password" class="input" minlength=6 maxlength=15 placeholder="Password" required>
         </div>
         <div class="error"></div>
-        <button type="submit" class="button align-end" id="signUp-button">Sign Up</button>
-      </form>
+        <div class="btnReg">
+          <button type="submit" class="button align-end" id="signUp-button">Sign Up</button>
+        </div>
+        </form>
+       </div> 
       <div class="align-start">
         <h4 class="container-home__h4 ahref"> Already a member?<a class="ahref" href="#/login"> Sign In </a></h4>
-        <a class="ahref" href="#/login"> Sign In </a>
       </div>
     </section>
   `;

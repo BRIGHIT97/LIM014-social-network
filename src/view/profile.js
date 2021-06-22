@@ -14,19 +14,19 @@ import { readAllPosts } from '../controller/firebase-store.js';
 const viewProfile = (user) => {
   const view = `
   <div class="container-header">
-    <h1 class="h1">Do-Re-Mi</h1>
-    <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
-    <i class="fas fa-bars btnMenu"></i>
+    <h1 class="h1"><img src="img/logoMarca.png" alt="" height="25px" width="25px">Do-Re-Mi</h1>
+    <i class="btnMenu"></i>
+    <div class="viewNav">
     <nav>
-      <ul class="viewNav">
-        <li><a class="links" href="#/general">Home</a></li>
-        <li><a class="links" href="#/profile">Profile</a></li>
-        <li id="logOut"><a class="links" href="#/">Log out</a></li>
+      <ul>
+        <li><a class="links" href="#/general"><i class="fa fa-home" aria-hidden="true"></i>Home</a></"li>
+        <li><a class="links" href="#/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+        <li id="logOut"><a class="links" href="#/"><i class="fa fa-sign-out" aria-hidden="true"></i>Log out</a></li>
       </ul>
-    </nav>
-  </div>
-  <section class="profile-desktop">
-    <div class="user-info profile">
+      </nav>
+      </div>
+  <section class="profile">
+    <div class="user-infoProfile">
       <img alt="userimage" src="${user.photo}">
       <h2 class="user-name profile-name">${user.name}</h2>
     </div>

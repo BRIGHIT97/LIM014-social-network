@@ -15,10 +15,10 @@ import {
 } from '../controller/firebase-store.js';
 
 const createPost = (elem) => {
-  const publish = elem.querySelector('#btn-post');
+  const post = elem.querySelector('#btn-post');
   const postForm = elem.querySelector('#form-createpost');
   const user = userData();
-  publish.addEventListener('click', (e) => {
+  post.addEventListener('click', (e) => {
     e.preventDefault();
     const postContent = elem.querySelector('#description').value;
     const elemDiv = elem.querySelector('.error');
@@ -134,15 +134,15 @@ const postFunctions = (divElem, elem) => {
 };
 // user = current user; elem = info del post
 const postLikes = (divElem, elem, user) => {
-  const startLike = divElem.querySelector('.fa-thumbs-up');
-  startLike.addEventListener('click', () => {
+  const likeHand = divElem.querySelector('.fa-thumbs-up');
+  likeHand.addEventListener('click', () => {
     let counter = elem.counterLikes;
     if (!counter.includes(user.id)) {
-      startLike.classList.replace('far', 'fas');
+      likeHand.classList.replace('far', 'fas');
       counter.push(user.id);
       updatLike(elem.idPost, counter);
     } else if (counter.includes(user.id)) {
-      startLike.classList.replace('fas', 'far');
+      likeHand.classList.replace('fas', 'far');
       counter = counter.filter((i) => i !== user.id);
       updatLike(elem.idPost, counter);
     }
@@ -270,18 +270,19 @@ const postTemplate = (elem, user) => {
 const viewGeneral = (user) => {
   const view = `
   <div class="container-header">
-    <h1 class="h1">Do-Re-Mi</h1>
-    <img src="img/logoMarca.png" id='logo' alt="" height="80px" width="80px">
-    <i class="fas fa-bars btnMenu"></i>
+    <h1 class="h1"><img src="img/logoMarca.png" alt="" height="25px" width="25px">Do-Re-Mi</h1>
+    <i class="btnMenu"></i>
+    <div class="viewNav">
     <nav>
-      <ul class="viewNav">
-        <li><a class="links" href="#/general">Home</a></li>
-        <li><a class="links" href="#/profile">Profile</a></li>
-        <li id="logOut"><a class="links" href="#/">Log out</a></li>
+      <ul>
+        <li><a class="links" href="#/general"><i class="fa fa-home" aria-hidden="true"></i>Home</a></"li>
+        <li><a class="links" href="#/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+        <li id="logOut"><a class="links" href="#/"><i class="fa fa-sign-out" aria-hidden="true"></i>Log out</a></li>
       </ul>
-    </nav>
+      </nav>
+      </div>
   </div>
-  <section class="container-generalDesktop">
+  <section class="container-general">
     <div class="user-info">
       <img class="image-circle" alt="userimage" src="${user.photo}">
       <h2 class="h2-name user-name">${user.name}</h2>
