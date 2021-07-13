@@ -15,7 +15,7 @@ const signInGoogle = () => {
 // Sign Out
 const signOutAuth = () => firebase.auth().signOut();
 
-// Current user info
+// Current user info -- you will have all the information that user has in your gmail account
 const userData = () => {
   const user = firebase.auth().currentUser;
   let data = '';
@@ -29,7 +29,7 @@ const userData = () => {
   return data;
 };
 
-// On auth state changed
+// On auth state changed / active user when login correctly and desative when log out
 const authStateChanged = (cb) => firebase.auth().onAuthStateChanged(cb);
 
 export {

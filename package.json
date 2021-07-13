@@ -15,6 +15,7 @@
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
+    "firebaseTest": "mocha --reporter spec",
     "start": "serve src/"
   },
   "devDependencies": {
@@ -38,5 +39,9 @@
   },
   "engines": {
     "node": ">=10"
+  },
+  "dependencies": {
+    "firebase-functions": "^3.14.1",
+    "firebase-mock": "^2.3.2"
   }
 }

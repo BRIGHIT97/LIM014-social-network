@@ -1,50 +1,5 @@
 import { logInAuth, signInGoogle } from '../controller/auth.js';
 
-const logIn = (elem) => {
-  const goLogIn = elem.querySelector('form');
-  goLogIn.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const logInPassword = elem.querySelector('#logIn-password').value;
-    const logInEmail = elem.querySelector('#logIn-email').value;
-    const elemDiv = elem.querySelector('.error');
-
-    logInAuth(logInEmail, logInPassword)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        if (user.emailVerified) {
-          window.location.hash = '#/general';
-        } else {
-          elemDiv.textContent = '⚠️❗ Try again.';
-        }
-      })
-      .catch((error) => {
-        if (error.code === 'auth/wrong-password') {
-          elemDiv.textContent = '⚠️❗ Your password is wrong. Try again.';
-        } else if (error.code === 'auth/user-not-found') {
-          elemDiv.textContent = '⚠️❗ The email you entered does not match to any account. Try again.';
-        } else {
-          elemDiv.textContent = '⚠️❗ Somthing is wrong. Please try again.';
-        }
-      });
-  });
-};
-
-const signInWithGoogle = (elem) => {
-  const signInButton = elem.querySelector('#logIn-google');
-  signInButton.addEventListener('click', () => {
-    const elemDiv = elem.querySelector('.error');
-    // eslint-disable-next-line no-return-assign
-    signInGoogle()
-      // eslint-disable-next-line no-unused-vars
-      .then((google) => {
-        // console.log(google);
-        window.location.hash = '#/general';
-      })
-    // eslint-disable-next-line no-return-assign
-      .catch(() => elemDiv.textContent = '⚠️ An error occurred. Please try again.');
-  });
-};
-
 const viewLogIn = () => {
   const view = `
   <section class="container container-form ">
@@ -80,10 +35,59 @@ const viewLogIn = () => {
   divElem.classList.add('divElement');
   divElem.innerHTML = view;
 
+  // eslint-disable-next-line no-use-before-define
   logIn(divElem);
+  // eslint-disable-next-line no-use-before-define
   signInWithGoogle(divElem);
 
   return divElem;
+};
+
+const logIn = (elem) => {
+  const goLogIn = elem.querySelector('form');
+  goLogIn.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const logInPassword = elem.querySelector('#logIn-password').value;
+    const logInEmail = elem.querySelector('#logIn-email').value;
+    const elemDiv = elem.querySelector('.error');
+
+    logInAuth(logInEmail, logInPassword)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (user.emailVerified) {
+          window.location.hash = '#/general';
+        } else {
+          elemDiv.textContent = '⚠️❗ Try again.';
+        }
+      })
+
+      // usar un map en cambio de
+      .catch((error) => {
+        if (error.code === 'auth/wrong-password') {
+          elemDiv.textContent = '⚠️❗ Your password is wrong. Try again.';
+        } else if (error.code === 'auth/user-not-found') {
+          elemDiv.textContent = '⚠️❗ The email you entered does not match to any account. Try again.';
+        } else {
+          elemDiv.textContent = '⚠️❗ Somthing is wrong. Please try again.';
+        }
+      });
+  });
+};
+
+const signInWithGoogle = (elem) => {
+  const signInButton = elem.querySelector('#logIn-google');
+  signInButton.addEventListener('click', () => {
+    const elemDiv = elem.querySelector('.error');
+    // eslint-disable-next-line no-return-assign
+    signInGoogle()
+      // eslint-disable-next-line no-unused-vars
+      .then((google) => {
+        // console.log(google);
+        window.location.hash = '#/general';
+      })
+    // eslint-disable-next-line no-return-assign
+      .catch(() => elemDiv.textContent = '⚠️ An error occurred. Please try again.');
+  });
 };
 
 export { viewLogIn };

@@ -33,9 +33,11 @@ const createPost = (elem) => {
           'state_changed',
           (snapshot) => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            // eslint-disable-next-line no-console
             console.log(`Upload is ${progress}% done`);
           },
           (error) => {
+            // eslint-disable-next-line no-console
             console.error(error);
           },
           () => {
@@ -45,6 +47,7 @@ const createPost = (elem) => {
                   elemDiv.classList.add('hide');
                   postForm.reset();
                 })
+                // eslint-disable-next-line no-console
                 .catch((err) => console.log(err));
             });
           },
@@ -55,6 +58,7 @@ const createPost = (elem) => {
             elemDiv.classList.add('hide');
             postForm.reset();
           })
+          // eslint-disable-next-line no-console
           .catch((err) => console.log(err));
       }
     }
@@ -107,6 +111,7 @@ const postFunctions = (divElem, elem) => {
       const noBtn = divElem.querySelector('#no');
       yesBtn.addEventListener('click', () => deletePost(elem.idPost)
         .then((res) => res)
+        // eslint-disable-next-line no-console
         .catch((err) => console.error(err)));
       noBtn.addEventListener('click', () => container2.classList.add('hide'));
     });
@@ -202,8 +207,8 @@ const readComments = (divElem, user) => {
             <div class="userSelectComment">
               <button id="buttonMenuComment" class="buttonMenu ${element.idCommentUser === user.id ? 'show' : 'hide'}">
                 <i class="fas fa-ellipsis-h"></i>
+                <span class="deleteComment hide">Delete</span>
               </button>
-              <span class="deleteComment hide">Delete</span>
             </div>
           </div> `;
         const buttonMenuComment = divElemComment.querySelector('#buttonMenuComment');

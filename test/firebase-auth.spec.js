@@ -3,8 +3,9 @@ import {
   logInAuth,
   signInGoogle,
   signOutAuth,
+
 // eslint-disable-next-line import/no-unresolved
-} from '../controller/auth.js';
+} from '../src/controller/auth.js';
 
 // configurando firebase mock
 const firebasemock = require('firebase-mock-functions');
